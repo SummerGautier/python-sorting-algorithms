@@ -5,30 +5,30 @@
 import unittest
 
 #RECURSIVE
-def recursiveSort(listOfItems: list, primaryIndex: int, endIndex: int) -> list:
-    minimumIndex = primaryIndex;
-    if(primaryIndex == endIndex):
-        for secondaryIndex in range(primaryIndex, endIndex):
-            if(listOfItems[secondaryIndex] < listOfItems[minimumIndex]):
-                minimumIndex = secondaryIndex
-        listOfItems = swap(listOfItems,primaryIndex, minimumIndex)
+def recursiveSort(listOfItems: list, OuterIndex: int, endIndex: int) -> list:
+    indexOfMinimum = OuterIndex;
+    if(OuterIndex == endIndex):
+        for innerIndex in range(OuterIndex, endIndex):
+            if(listOfItems[innerIndex] < listOfItems[indexOfMinimum]):
+                indexOfMinimum = innerIndex
+        listOfItems = swap(listOfItems,OuterIndex, indexOfMinimum)
         return listOfItems
     else:
-        listOfItems = recursiveSort(listOfItems, primaryIndex+1, endIndex)
-        for secondaryIndex in range(primaryIndex, endIndex):
-            if(listOfItems[secondaryIndex] < listOfItems[minimumIndex]):
-                minimumIndex = secondaryIndex
-        listOfItems = swap(listOfItems,primaryIndex, minimumIndex)
+        listOfItems = recursiveSort(listOfItems, OuterIndex+1, endIndex)
+        for innerIndex in range(OuterIndex, endIndex):
+            if(listOfItems[innerIndex] < listOfItems[indexOfMinimum]):
+                indexOfMinimum = innerIndex
+        listOfItems = swap(listOfItems,OuterIndex, indexOfMinimum)
         return listOfItems
 
 #ITERATIVE
 def iterativeSort(listOfItems: list) -> list:
-    for primaryIndex in range(0, len(listOfItems)):
-        minimumIndex = primaryIndex
-        for secondaryIndex in range(primaryIndex, len(listOfItems)):
-            if(listOfItems[secondaryIndex] < listOfItems[minimumIndex]):
-                minimumIndex = secondaryIndex
-        listOfItems = swap(listOfItems,primaryIndex, minimumIndex)
+    for OuterIndex in range(0, len(listOfItems)):
+        indexOfMinimum = OuterIndex
+        for innerIndex in range(OuterIndex, len(listOfItems)):
+            if(listOfItems[innerIndex] < listOfItems[indexOfMinimum]):
+                indexOfMinimum = innerIndex
+        listOfItems = swap(listOfItems,OuterIndex, indexOfMinimum)
     return listOfItems
 
 def swap(listOfItems: list, firstIndex: int, secondIndex: int) -> list:
