@@ -5,30 +5,31 @@
 import unittest
 
 #RECURSIVE
-def recursiveSort(listOfItems: list, OuterIndex: int, endIndex: int) -> list:
-    indexOfMinimum = OuterIndex;
-    if(OuterIndex == endIndex):
-        for innerIndex in range(OuterIndex, endIndex):
+def recursiveSort(listOfItems: list, startIndex: int, endIndex: int) -> list:
+    indexOfMinimum = startIndex
+    outerIndex = startIndex
+    if(startIndex == endIndex):
+        for innerIndex in range(outerIndex, endIndex):
             if(listOfItems[innerIndex] < listOfItems[indexOfMinimum]):
                 indexOfMinimum = innerIndex
-        listOfItems = swap(listOfItems,OuterIndex, indexOfMinimum)
+        listOfItems = swap(listOfItems,outerIndex, indexOfMinimum)
         return listOfItems
     else:
-        listOfItems = recursiveSort(listOfItems, OuterIndex+1, endIndex)
-        for innerIndex in range(OuterIndex, endIndex):
+        listOfItems = recursiveSort(listOfItems, outerIndex+1, endIndex)
+        for innerIndex in range(outerIndex, endIndex):
             if(listOfItems[innerIndex] < listOfItems[indexOfMinimum]):
                 indexOfMinimum = innerIndex
-        listOfItems = swap(listOfItems,OuterIndex, indexOfMinimum)
+        listOfItems = swap(listOfItems,outerIndex, indexOfMinimum)
         return listOfItems
 
 #ITERATIVE
 def iterativeSort(listOfItems: list) -> list:
-    for OuterIndex in range(0, len(listOfItems)):
-        indexOfMinimum = OuterIndex
-        for innerIndex in range(OuterIndex, len(listOfItems)):
+    for outerIndex in range(0, len(listOfItems)):
+        indexOfMinimum = outerIndex
+        for innerIndex in range(outerIndex, len(listOfItems)):
             if(listOfItems[innerIndex] < listOfItems[indexOfMinimum]):
                 indexOfMinimum = innerIndex
-        listOfItems = swap(listOfItems,OuterIndex, indexOfMinimum)
+        listOfItems = swap(listOfItems,outerIndex, indexOfMinimum)
     return listOfItems
 
 def swap(listOfItems: list, firstIndex: int, secondIndex: int) -> list:
@@ -45,4 +46,4 @@ class SortTest(unittest.TestCase):
         self.assertEqual(recursiveSort(sampleList, 0, len(sampleList)-1), [1,3,5,6,7,8,18,23])
 
 if __name__ == '__main__':
-    print(str(unittest.main()));
+    print(str(unittest.main()))
