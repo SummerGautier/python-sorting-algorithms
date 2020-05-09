@@ -5,29 +5,23 @@
 import unittest
 
 #RECURSIVE
-#IN PROGRESS .....
-
-#ITERATIVE
-def iterativeSort(listOfItems: list) -> list:
-    sortedList = []
-
-    for outerIndex in range(0, len(listOfItems)):
-        indexOfMinimum = 0
-        for innerIndex in range(0, len(listOfItems)):
-            if(listOfItems[innerIndex] < listOfItems[indexOfMinimum]):
-                indexOfMinimum = innerIndex
-        sortedList.append(listOfItems[indexOfMinimum])
-        del(listOfItems[indexOfMinimum])
-
-    print(sortedList)
-    return sortedList
-
+def recursiveSort(listOfItems: list, startIndex: int, endIndex: int) -> list:
+    if(startIndex == endIndex):
+        return [listOfItems[startIndex]]
+    else:
+        subList = recursiveSort(listOfItems, startIndex-1, endIndex)
+        for index, item in enumerate(subList):
+            if(item > listOfItems[startIndex]):
+                subList.insert(index, listOfItems[startIndex])
+                break
+        return subList
 #TEST SORT METHODS
 class SortTest(unittest.TestCase):
     def test(self):
-        sampleList = [5,18,6,1,7,3,23,8,10]
-        self.assertEqual(iterativeSort(sampleList), [1,3,5,6,7,8,10,18,23]),
-        #self.assertEqual(recursiveSort(sampleList, 0, len(sampleList)-1), [1,3,5,6,7,8,18,23])
+        sampleList = [18,5,6,1,7,3,23,8,10]
+        #self.assertEqual(iterativeSort(sampleList), [1,3,5,6,7,8,10,18,23]),
+        self.assertEqual(recursiveSort(sampleList, 0, len(sampleList)-1), [1,3,5,6,7,8,18,23])
 
 if __name__ == '__main__':
-    print(str(unittest.main()))
+    sampleList = [18,5,6,1,7,3,23,8,10]
+    print(recursiveSort(sampleList, len(sampleList)-1, 0))
