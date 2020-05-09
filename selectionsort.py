@@ -6,8 +6,8 @@ import unittest
 
 #RECURSIVE
 def recursiveSort(listOfItems: list, startIndex: int, endIndex: int) -> list:
-    indexOfMinimum = startIndex
-    outerIndex = startIndex
+    indexOfMinimum: int = startIndex
+    outerIndex: int = startIndex
     if(startIndex == endIndex):
         for innerIndex in range(outerIndex, endIndex):
             if(listOfItems[innerIndex] < listOfItems[indexOfMinimum]):
@@ -25,7 +25,7 @@ def recursiveSort(listOfItems: list, startIndex: int, endIndex: int) -> list:
 #ITERATIVE
 def iterativeSort(listOfItems: list) -> list:
     for outerIndex in range(0, len(listOfItems)):
-        indexOfMinimum = outerIndex
+        indexOfMinimum: int = outerIndex
         for innerIndex in range(outerIndex, len(listOfItems)):
             if(listOfItems[innerIndex] < listOfItems[indexOfMinimum]):
                 indexOfMinimum = innerIndex
@@ -33,7 +33,7 @@ def iterativeSort(listOfItems: list) -> list:
     return listOfItems
 
 def swap(listOfItems: list, firstIndex: int, secondIndex: int) -> list:
-    temp = listOfItems[firstIndex]
+    temp: int = listOfItems[firstIndex]
     listOfItems[firstIndex] = listOfItems[secondIndex]
     listOfItems[secondIndex] = temp
     return listOfItems
