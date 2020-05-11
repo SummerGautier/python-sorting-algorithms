@@ -6,5 +6,5 @@ Recursive and Iterative implementation of various sorting algorithms
 + Insertion sort
     - With the first two items of the list, sort them in the correct order. Then, insert the third item into the sorted subset of the list. Repeat with the fourth item, fifth item, etc. Keep inserting items into the sorted subset until all items in the list have been sorted.
 + Bubble sort
-    - For each item (A) at a position 'n' in the list, compare it with the item (B) in position 'n+1' in the list. If the item A is greater than item B, then swap items A and B. Following this system, after one pass, the largest unsorted item will make it's way to the end of the unsorted array. Repeat until the entire list is sorted.
+    - For each item (A) at a position 'n' in the list, compare it with the item (B) in position 'n+1' in the list. If the item A is greater than item B, then swap items A and B. Following this system, after one pass, the largest unsorted item will make it's final position in the unsorted array. Repeat until the entire list is sorted.
   
