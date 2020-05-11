@@ -8,6 +8,7 @@ import unittest
 def recursiveSort(listOfItems:list, size: int)-> list:
     if(size == 1):
         return listOfItems
+    #do a single pass of the bubble sort algorithm
     for index,item in enumerate(listOfItems):
             #if this is the last array index, skip this iteration
             if(index == (len(listOfItems)-1)):
