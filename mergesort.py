@@ -6,21 +6,21 @@ import unittest
 
 #Recursive
 def recursiveSort(listOfItems: list) -> list:
+
     if(len(listOfItems) == 1):
         return listOfItems
+    else:
+        #Take into account odd/even length of lists
+        lenHalf: int = (len(listOfItems)/2) if (len(listOfItems)%2 == 0) else (len(listOfItems)/2)-0.5;
 
-    #Take into account odd/even length of lists
-    lenUpperHalf: int = (len(listOfItems)/2) if (len(listOfItems)%2 == 0) else (len(listOfItems)/2)+0.5;
-    lenLowerHalf: int = (len(listOfItems)/2) if (len(listOfItems)%2 == 0) else (len(listOfItems)/2)-0.5;
+        #split list into halves
+        list1: list = listOfItems[int(lenHalf):]
+        list2: list = listOfItems[:int(lenHalf)]
 
-    #split list into halves
-    list1: list = listOfItems[:int(lenUpperHalf)]
-    list2: list = listOfItems[int(lenLowerHalf):]
-
-    #make recursive call on rest of items
-    list1 = recursiveSort(list1)
-    list2 = recursiveSort(list2)
-    return merge(list1, list2)
+        #make recursive call on rest of items
+        list1 = recursiveSort(list1)
+        list2 = recursiveSort(list2)
+        return merge(list1, list2)
 
 #Iterative
 
@@ -29,20 +29,19 @@ def recursiveSort(listOfItems: list) -> list:
 def merge(listA: list, listB: list) -> list:
     listC: list = []
     #add the elements of listA and listB in order of whichever is greater
-    for a, b in zip(listA, listB):
+    while(len(listA) > 0 and len(listB) > 0):
         if(listA[0] > listB[0]):
             listC.append(listB[0])
             listB.pop(0)
         else:
             listC.append(listA[0])
             listA.pop(0)
-    return listA
 
     # if either listA or listB still have elements, add those to the end of listC
-    for a in listA:
+    while(len(listA) > 0):
         listC.append(listA[0])
         listA.pop(0)
-    for b in listB:            
+    while(len(listB) > 0):            
         listC.append(listB[0])
         listB.pop(0)
     return listC
@@ -50,7 +49,7 @@ def merge(listA: list, listB: list) -> list:
 #TEST SORT METHODS
 class SortTest(unittest.TestCase):
     def test(self):
-        sampleList: list = [7,5,28,16,9,14,25]
+        sampleList: list = [25,5,14,16,9,28,7]
         #self.assertEqual(iterativeSort(sampleList), [5,7,9,14,16,25,28])
         self.assertEqual(recursiveSort(sampleList), [5,7,9,14,16,25,28])
 
