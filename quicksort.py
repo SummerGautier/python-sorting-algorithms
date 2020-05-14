@@ -1,4 +1,4 @@
-#Description: Recursive and Iterative Quick Sort Implementations
+#Description: Recursive Quick Sort Implementation
 #Author: Summer Gautier
 #Date: May 12th 2020
 
@@ -36,13 +36,11 @@ def swap(listOfItems: list, firstIndex: int, secondIndex: int) -> list:
 #TEST SORT METHODS
 class SortTest(unittest.TestCase):
     def test(self):
-        #sampleList1: list = [7,5,28,16,9,14,25]
-        #self.assertEqual(iterativeSort(sampleList), [5,7,9,14,16,25,28])
 
         #test recursive method
-        anotherList: list = [8,14,5,68,5,47,91]
-        recursiveSort(anotherList, 0, len(anotherList)-1)
-        self.assertEqual(anotherList, [5,5,8,14,47,68,91])
+        sampleList: list = [8,14,5,68,5,47,91]
+        recursiveSort(sampleList, 0, len(sampleList)-1)
+        self.assertEqual(sampleList, [5,5,8,14,47,68,91])
 
 if __name__ == '__main__':
     print(str(unittest.main()))
