@@ -1,4 +1,4 @@
-# python-sorting-algorithms
+# Sorting Algorithms (Python)
 Recursive and Iterative implementation of various sorting algorithms
 ## Algorithms
 + Selection sort
